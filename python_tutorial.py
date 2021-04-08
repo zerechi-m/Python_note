@@ -123,3 +123,13 @@ def cheeseshop(kind, *arguments, **keyword):         # *argumentsは仮引数に
 
 cheeseshop("Limburger", "It's very runny, sir.", "It's really very, VERY runny sir.",   # Limburger以外の位置指定引数は仮引数に表示がない為、※argumentにリストで格納
             shopkeeper="Michael Palin", client="John Cleese", sketch="Cheese Shop Sketch") #キーワード引数は仮引数に該当がない為、**keywordにリストで格納
+
+# 4.7.3 ) 特殊引数
+
+  # pythonの関数の引数は、位置渡しと明示的なキーワード指定渡しがデフォルト
+
+  # def f (pos1, pos2, /, pos_or_kwd, *,kwd1, kwd2):
+        #    位置引数   位置またはキーワード    キーワードのみ      引数内の / , * は関数への渡され方が明示的である
+
+        
+        
