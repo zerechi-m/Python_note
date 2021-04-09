@@ -1,6 +1,6 @@
 # 標準入力について -----------------------------
 
-# input("入力 : ")  # 標準入力、文字列で渡される
+# print(input("入力 : "))  # 標準入力、文字列で渡される
 
 int("5")    # 文字列を整数に変更する int = integer
 
@@ -28,5 +28,12 @@ list.append('zz')  # array.append() で配列の最後に値を挿入
 print(list)
 
 print(len(list))   # len(array) で配列の数を出力
+
+# join関数について -----------------------------
+
+test = ['ab', 'c', 'de']
+result = '/'.join(test)   #join関数によってlistもjoinすることができる
+
+print(result)  # 出力結果 ab/c/de
 
 

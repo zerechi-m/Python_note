@@ -153,4 +153,46 @@ def combined_example(pos_only, /, standard, *, kwd_only): #関数定義に/ ,* �
 
 combined_example(5, 6, kwd_only=7)
 
+# 4.7.6 ) lambda式について
 
+add_lambda = lambda a, b: a + b  #小さな無名関数がかける
+
+print(add_lambda(2,6))
+
+
+def make_incrementer(n):      # n = 42 実引数が該当
+  return lambda x: x + n      # x には f(0)の実引数が該当する
+
+f = make_incrementer(42)
+print(f(1))
+
+# 4.7.7 ) ドキュメンテーション文字列(docstring)
+
+def function():        #pythonの慣習で大文字から始める
+  """A aaaaaaaaa         
+
+  Bbbbbbbbbbbb"""
+print(function.__doc__)  #関数名.__doc__ ドキュメンテーションを表示する
+
+# 4.7.8 ) 関数注釈 (関数アノテーション)
+
+  #関数における、属性と変数が受け取った引数の表示を行う
+  #注釈は _annotations__属性にディクショナリとして格納
+
+def f(ham: str, eggs: str = 'eggs'):
+  print("Annotations:", f.__annotations__)  # hamとeggsの属性を表示
+  print("Arguments:", ham, eggs)            # hamとeggsの変数を表示
+  return ham + ' and ' + eggs
+
+f('spam')
+
+# 4.8 ) 幕間つなぎ：コーディングスタイル
+
+# 1: インデントはスペース4つとして、タブは使用しない
+# 2: 79文字以下で行を折り返す  *小型ディスプレイの視認性
+# 3: 関数やクラスさらには関数内の大きめのブロックを分離するのに空白行を使用する
+# 4: 可能であれば、コメント行は独立させる
+# 5: docstring を使用    """ これがdocstringです """
+# 6: 演算子やカンマの後ろにはスペースを入れるが、前には使用しない 【OK a(b, x)】【NG a( b, x )】 
+# 7: クラスは関数には一貫した命名を行う。 クラスには UpperCamelCase を使用する   メソッドには lower_method スネークケース
+# 8: 
