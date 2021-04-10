@@ -230,4 +230,35 @@ print(constructor)
 constructor = dict(name='Yu',age=30 )
 print(constructor)
 
-  
+
+# 5.6 ) for文のループテクニック
+
+ # ディクショナリにループをかけるときにitems()メソッドを使用すると key , value を取得
+
+knight = { 'galand': 'the pure', 'robin': 'the brave'}
+for k, v in knight.items():
+    print(k, v)             #<-- 出力 galand the pure ...
+
+ # シーケンスにループをかけるとき、 enumerate() 関数を使うと位置インデックスとそれに対応した値を同時に取得できる
+for i, v in enumerate(['tic', 'tac', 'toe']):
+    print(i, v)             #<-- 出力 0 tic , 1 tac, 2 toe
+
+ # 2つ以上のシーケンスを同時にループをかけるときは zip()関数を使用すると両者のエントリを同時に取得できる。
+questions = ['name', 'quest', 'favorite']
+answer = ['lancelot', 'the holy grail', 'blue']
+for q, a in zip(questions, answer):
+    print('What is your {0}? It is {1}.'.format(q, a) )
+
+ # reversed()関数を使用して逆順で出力
+for i in reversed(range(1, 10, 2)):
+    print(i)
+
+ # sorted()関数  シーケンスをソート順にループする
+basket = ['apple', 'pear', 'orange', 'apple']
+for i in sorted(basket):
+    print(i)
+
+print(basket)  # sorted()関数はコピーをとって行う為、基のシーケンスに変更を加えない
+
+
+
