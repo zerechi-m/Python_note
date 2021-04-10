@@ -269,5 +269,3 @@ if a in b:             # pythonでは 文字列の比較の場合は is(==) , is
     print('等しい')     # a in b <- a は bに入っているか
 else:
     print('等しくない')
-
-
