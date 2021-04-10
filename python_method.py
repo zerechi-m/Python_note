@@ -44,7 +44,7 @@ string = "xxxHello, Pythonxxx"
 print(string.strip("x"))   # xが全て削除される  また大文字・小文字の区別はされる
 
 fruit = ["   a", "bb  ", " c c "]           # 各要素の文字の前後にあるスペースを削除
-print(  list(f.strip() for f in fruit)   )  # リストの要素
+print(  list(f.strip() for f in fruit)   )  # リストの要素 strip()で全角/半角スペースを除去
 
 
 # lstrip ・ rstrip メソッドについて
