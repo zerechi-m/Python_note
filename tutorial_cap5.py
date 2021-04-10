@@ -59,7 +59,7 @@ print(queue.popleft())           #popleft()で先頭の要素削除と取り出�
 print(queue.pop())               #pop()で末尾の要素削除と取り出し
 print(queue)
 
-# 5.1.2 ) リストを内包する ------------------------
+# 5.1.3 ) リストを内包する ------------------------
 
 squares1 = []
 for x in range(10):
@@ -93,3 +93,38 @@ print( [(x, x**2) for x in range(1, 8)] )
 # forを2つ使用してリストを一次元化する
 vec = [[1,2,3], [4,5,6], [7,8,9]]
 print( [num for elem in vec for num in elem] ) 
+
+# 5.1.4 ) 入れ子のリストの内包
+
+matrix = [
+  [1,2,3,4],
+  [5,6,7,8],
+  [9,10,11,12]
+]
+
+print([[ row[i] for row in matrix] for i in range(4)])
+ 
+ # この一文は 以下と等価である
+
+trans = []
+for i in range(4):
+    trans.append([row[i] for row in matrix])
+
+print(trans)
+
+ # 上記の文を手順を追って記述を行うと
+
+trans = []
+for i in range(4):
+    trans_a = []
+    for row in matrix:
+          trans_a.append(row[i])
+    trans.append(trans_a)
+
+print(trans)
+
+ # 実際に上記のフローは複雑なためビルトイン関数zipを使用する
+
+print(list(zip(*matrix)))
+
+
