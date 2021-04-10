@@ -216,8 +216,10 @@ print(tel['jack'])                     # ディクショナリの値の取り出
 del tel['sape']                        # ディクショナリのkey を指定して削除
 print(tel)
 
-print(list(tel))                              # ディクショナリをリストに変換  ['jack', 'guido']とkeyのみがリストに変換される
+print(list(tel))                       # ディクショナリをリストに変換  ['jack', 'guido']とkeyのみがリストに変換される
 
+print(sorted(tel))                     # key名をソートしてリストに変換
+ 
 # dict() コンストラクタについて
     # 「 key: value」のペアのタプルから成るシーケンスからディクショナリが生成できる
               
