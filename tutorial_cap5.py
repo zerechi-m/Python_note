@@ -170,3 +170,36 @@ print(a)       #<-- 出力 123
  # ネストしたタプルのシークエンス・アンパッキング(開梱)
 (a,b),(c,d,e) = u   #<-- ネストされてあるタプル毎に()で囲むことで展開することができる
 print(a,b,c,d,e)
+
+# 5.4 ) 集合 (set) -----------------------------------------
+ 
+ # 集合とは重複しないPythonには集合の為のデータ型まである。
+ # 基本的な用途としては存在判定(membership testing)や重複エントリの排除がある。
+ # 集合オブジェクトは 和(+)・交差・差(-)・対称差といった数学的演算をサポート
+
+basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}  # 集合には {}を使用する
+print(basket)  #<-- 出力 {'orange', 'pear', 'apple', 'banana'}
+ 
+print('orange' in basket)  #<-- 集合内の存在判定
+
+# 二つの単語から非重複文字をとって集合演算を実演
+a = set('abracadabra')    # set(x) で集合を新規作成。
+b = set('attribute')
+print(a, b)
+
+ # aに存在して b には存在しない文字
+print(a - b)         # aとbの重複した文字を減算し差を出力 *これは集合にしか対応していない
+ 
+ # a または b または両者に存在する文字
+print( a | b)
+
+ # a にも b にも存在する文字
+print(a & b)
+ 
+ # a または b に共通しない文字
+print( a ^ b)
+
+ # リストの内包に似たサポートも行う
+a = { x for x in 'abracadabra' if x not in 'abc'}
+print(a)
+  
