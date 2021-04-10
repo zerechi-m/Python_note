@@ -31,6 +31,56 @@ print(list1)
 
 print(len(list1))   # len(array) で配列の数を出力
 
+list1 = ['a', 'b', 'c']
+
+# list1.append('x')             #list1の末尾にアイテムを追加
+list1.append('x')
+print(list1)
+
+# list1.extend(iterable)         #list1の末尾に反復可能体の全アイテムを追加 iterable = list1など
+list1.extend(['x', 'y', 'z'])
+print(list1)
+
+# list1.insert(i , x)             #list1のインデックスi に アイテムx を追加
+list1.insert(2 , 'z') 
+print(list1)
+
+# list1.remove(x)                # list1内でアイテムxに等しい、最初のアイテムを削除する
+list1.remove('z')                # list1内に対象のアイテムがなければエラーを返す  ValueError
+print(list1)
+
+# list1.pop([i])                # 指定されたインデックスi のアイテムを削除し、削除したアイテムを返す
+print(list1.pop(1))
+
+# list1.index(x[, start[, end]])  # 値がxに等しい最初のアイテムのインデックスを返す
+print(list1.index('a'))
+
+# list1.count(x)                 # リストの中で引数のアイテムx と合致したアイテムの個数を返す
+print(list1.count('x'))
+
+# list1.sort(key=None, reverse=False)  # リストをコピーを行わずソートを行う, keyがある場合は指定
+list1.sort()                      # reverse= Falseで昇順, reverse=Trueで降順 
+print(list1)
+
+# list1.reverse()                # リストをコピーを行わず降順にソートを行う
+list1.reverse()
+print(list1)
+
+# sorted(list1)                  #リストにコピーを行いソートを行う、変数に代入を行うことができる
+new_list1 = sorted(list1)
+print(37, list1)
+print(37, new_list1)
+
+# list1.copy()                  #リストのシャローコピー(浅いコピー)を返す
+copy_list1 = list1.copy()        # 変数に格納する場合は 変数にlist1.copyを使用
+print(copy_list1)
+
+# list1.clear                 # リストから全てのアイテムを削除する
+list1.clear()
+print(list1)
+
+# --------------------------------------------------------------------------------------------
+
 # join関数について -----------------------------
 
 test = ['ab', 'c', 'de']
