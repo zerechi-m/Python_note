@@ -261,4 +261,13 @@ for i in sorted(basket):
 print(basket)  # sorted()関数はコピーをとって行う為、基のシーケンスに変更を加えない
 
 
+# 5.7 ) 条件についての補足
+
+a = 'aa'
+b = 'aa'
+if a in b:             # pythonでは 文字列の比較の場合は is(==) , is not(!=)
+    print('等しい')     # a in b <- a は bに入っているか
+else:
+    print('等しくない')
+
 
