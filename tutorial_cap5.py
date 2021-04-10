@@ -32,13 +32,14 @@ print(list1.count('x'))
 list1.sort()                      # reverse= Falseで昇順, reverse=Trueで降順 
 print(list1)
 
-# sorted(list1)                  #リストにコピーを行いソートを行う、変数に代入を行うことができる
-new_list1 = sorted(list1)
-print(new_list1)
-
 # list1.reverse()                # リストをコピーを行わず降順にソートを行う
 list1.reverse()
 print(list1)
+
+# sorted(list1)                  #リストにコピーを行いソートを行う、変数に代入を行うことができる
+new_list1 = sorted(list1)
+print(37, list1)
+print(37, new_list1)
 
 # list1.copy()                  #リストのシャローコピー(浅いコピー)を返す
 copy_list1 = list1.copy()        # 変数に格納する場合は 変数にlist1.copyを使用
@@ -94,7 +95,7 @@ print( [(x, x**2) for x in range(1, 8)] )
 vec = [[1,2,3], [4,5,6], [7,8,9]]
 print( [num for elem in vec for num in elem] ) 
 
-# 5.1.4 ) 入れ子のリストの内包
+# 5.1.4 ) 入れ子のリストの内包------------------------------------
 
 matrix = [
   [1,2,3,4],
@@ -127,4 +128,20 @@ print(trans)
 
 print(list(zip(*matrix)))
 
+# 5.2 ) del文 ----------------------------------------------
+
+# リストのアイテムを削除する際にインデックスを指定するのが del文 である
+# del文にて削除すると、削除した値を返さないところが pop() との違いになる。
+
+a = [0,1,2,3,4]
+del a[0]          #リストの先頭を削除
+print(a)
+
+ # スライスによる削除
+del a[1:3]
+print(a)
+ 
+ # リスト内全削除
+del a[:]
+print(a)
 
