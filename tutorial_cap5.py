@@ -202,4 +202,30 @@ print( a ^ b)
  # リストの内包に似たサポートも行う
 a = { x for x in 'abracadabra' if x not in 'abc'}
 print(a)
+
+# 5.5 ) ディクショナリ  Rubyのハッシュ構造 ----------------------------------------------------------------
+
+# Pythonでは { 'key' : 'value'}の構造で 数値や文字列は常に key として使用可能、
+# タプルもキーとして使用できるが、タプル内に可変型のオプジェクトが含まれている場合は改変の可能性がある為 key として使用できない
+
+tel = {'jack': 4098, 'sape': 4139}     # ディクショナリの作成
+tel['guido'] = 4127                    # ディクショナリに追加  dic['key'] = value
+
+print(tel['jack'])                     # ディクショナリの値の取り出し  dic['key']で取り出し
+
+del tel['sape']                        # ディクショナリのkey を指定して削除
+print(tel)
+
+print(list(tel))                              # ディクショナリをリストに変換  ['jack', 'guido']とkeyのみがリストに変換される
+
+# dict() コンストラクタについて
+    # 「 key: value」のペアのタプルから成るシーケンスからディクショナリが生成できる
+              
+constructor = dict([('name', 'zerechi'), ('age', 28)])
+print(constructor)
+
+    # キーワード引数でペアを指定することも可能
+constructor = dict(name='Yu',age=30 )
+print(constructor)
+
   
