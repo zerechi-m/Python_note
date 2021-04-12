@@ -59,3 +59,20 @@ for x in range(1, 11):
 import math
 print('πの値はおおよそ%5.3fである' % math.pi)
 
+# 7.2 ) ファイルの読み書き
+
+ # open(ファイル名, モード, エンコーディング)
+f = open('text.txt', 'a', encoding='utf-8')    
+f.write('s書き込みマッスル\n')    #write()で書込み
+f.close()                     #.close()で保存
+  # w は書き出し専用, 
+  # r は読込専用, 
+  # a は書込みデータがファイル末尾に自動的に記載される, 
+  # r+ は読書き両用
+  # x は新規作成
+  # b はバイナリモードで開く
+
+r = open('text1.txt', 'r', encoding='utf-8')
+print(r.read())          #r.read()でファイルのテキストを表示
+r.close()
+
