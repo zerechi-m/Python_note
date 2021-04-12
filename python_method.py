@@ -177,3 +177,8 @@ print(repr(7).rjust(5))  # str.rjust は指定の幅に右よせ rjust(5) スペ
 
 # repr() と str() の表示の違いについて
 
+import datetime
+today = datetime.date.today()
+print(str(today))           #<--- ユーザー用の出力のため、読みやすい文字列で表示
+print(repr(today))          #<--- オブジェクトに返して出力するため、デバック用
+
