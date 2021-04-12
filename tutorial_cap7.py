@@ -42,6 +42,15 @@ print('Sjoerd: {0[Sjoerd]:d}, Jack: {0[Jack]:d}, Dcab: {0[Dcab]:d}'.format(table
  # **tableを使用すると
 print('Sjoerd: {Sjoerd:d}, Jack: {Jack:d}, Dcab: {Dcab:d}'.format(**table))
 
+ # vars()関数を使用してカラムを整形して表示
+for x in range(1,11):
+    print('{0:2d} {1:3d} {2:4d}'.format(x, x**2, x**3))
 
 # 7.1.3 ) 手動での文字列フォーマッティング
 
+ #二乗三乗の表を手動で整形すると以下になる
+for x in range(1, 11):
+    print(repr(x).rjust(2), repr(x**2).ljust(3),end=' ')  #rjust(x) xの数値分の幅を設定し右詰で表示する。 r = right(右詰). l = left(左詰)
+    print(repr(x**3).rjust(4))
+
+  
