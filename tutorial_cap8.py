@@ -97,12 +97,36 @@ except Exception as inst:
 
 # 8.4 ) 例外の送り出し
   # raise文にて 指定の例外を強制的に発生させることができる
-raise NameError("Hi There")    #  出力  raise NameError("Hi There") \n NameError: Hi There
+# raise NameError("Hi There")    #  出力  raise NameError("Hi There") \n NameError: Hi There
 
  #デバッグの際に 例外が送出されるか確認したいが、try文に処理を記載する前などに使用
 
+# try:
+#     raise NameError('Hi there')
+# except NameError:
+#     print('例外が飛んでいきましたよ')
+#     raise
+
+# 8.5 ) 例外の連鎖 ------------------------------------------------------------------------
+
+ # raise文にはオプションfromを付加する事ができる.
+ # これは送出された例外 __cause__属性をセットすることで例外の連鎖を可能にするものだ
+
+# raise RuntimeError from OSError
+
+# def func():
+#     raise IOError
+
+# try:
+#     func()
+# except IOError as exc:
+#     raise RuntimeError('データベースのオープンに失敗しました') from exc
+
+ # 例外連鎖が自動的に起こる場合がある。例外ハンドラやfinally節の内部で例外が送出された時である
+ # 例外連鎖を止めるには慣例記法の from None を使用する
+
 try:
-    raise NameError('Hi there')
-except NameError:
-    print('例外が飛んでいきましたよ')
-    raise
+    open('database.sqlite')
+except IOError:
+    raise RuntimeError from None
+ 
