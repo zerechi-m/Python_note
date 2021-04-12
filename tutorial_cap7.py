@@ -90,3 +90,19 @@ for line in r:
 print(list(r))
 
 r.close()
+
+# 7.2.2 ) 構造のあるデータをjsonで保存する
+
+ # jsonがPythonのデータ階層構造を取って文字列表現にコンバートできる、これをシリアライズ
+ # 逆に文字列表現からデータを再構築することを デシリアライズ
+
+import json
+print(json.dumps([1, 'simple', 'list']))
+
+json_open = open('test.json', 'r', encoding='utf-8') 
+json_load = json.load(json_open)
+print(json_load['section1']['key'])
+
+# json.dump(x, f)  # dump関数()はオブジェクトをシリアライズする
+# x = json.load(f) # デコードしてオブジェクトに戻すには json.load
+
