@@ -54,3 +54,8 @@ for x in range(1, 11):
     print(repr(x**3).rjust(4))
 
   
+# 7.1.4 ) 従来形式の文字列フォーマッティング
+
+import math
+print('πの値はおおよそ%5.3fである' % math.pi)
+
