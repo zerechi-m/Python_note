@@ -94,3 +94,15 @@ except Exception as inst:
     x, y = inst.args           #<-- inst.argsを展開
     print('x = ', x)
     print('y = ', y)
+
+# 8.4 ) 例外の送り出し
+  # raise文にて 指定の例外を強制的に発生させることができる
+raise NameError("Hi There")    #  出力  raise NameError("Hi There") \n NameError: Hi There
+
+ #デバッグの際に 例外が送出されるか確認したいが、try文に処理を記載する前などに使用
+
+try:
+    raise NameError('Hi there')
+except NameError:
+    print('例外が飛んでいきましたよ')
+    raise
