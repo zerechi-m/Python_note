@@ -125,8 +125,48 @@ except Exception as inst:
  # 例外連鎖が自動的に起こる場合がある。例外ハンドラやfinally節の内部で例外が送出された時である
  # 例外連鎖を止めるには慣例記法の from None を使用する
 
-try:
-    open('database.sqlite')
-except IOError:
-    raise RuntimeError from None
+# try:
+#     open('database.sqlite')
+# except IOError:
+#     raise RuntimeError from None
  
+# 8.6 ) ユーザー定義例外
+
+ # 例外クラスの設定により、プログラムには独自の例外を含める事ができる。
+ # 通常はExceptionクラスから派生した例外にすべきである。
+ # 色々なエラーを送出すモジュールを書く際にはモジュールで定義する例外のベースクラスを記載して
+ # これをサブクラス化することでそれぞれのエラー状態にあった例外クラスを書く事が多い
+
+class Error(Exception):
+    """このモジュールの例外ベースクラス"""
+    pass
+
+class InputError(Error):
+    """入力エラーで送出される例外
+
+    属性：
+        expression -- エラーが起きた入力式
+        message -- エラーの説明
+    """
+
+def __init__(self, expression, message):
+    self.expression = expression
+    self.message = message
+
+class TransitionError(Error):
+    """許可されない状態遷移を起こそうとする操作があれば
+    送出しされる
+
+    属性：
+        previous -- 遷移前の状態
+        next -- 移ろうとした状態
+        message -- その遷移がなぜ許可されないのかの説明
+    """
+
+def __init__(self, previous, next, massage):
+    self.previous = previous
+    self.next = next
+    self.message = message
+
+
+
