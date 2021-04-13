@@ -168,5 +168,42 @@ def __init__(self, previous, next, massage):
     self.next = next
     self.message = message
 
+# 8.7 ) クリーンアップ動作の定義
 
+ # try文にはもう一つオプションの節がある。これはクリーンアップ動作を定義することを意図した
+ # もので全ての状況で必ず実行される。
 
+# try:
+#      raise KeyboardInterrupt
+# finally:                         #finally節が存在する場合、この節はtry文が完了する前の最後のタスクとして実行される
+#     print('Goodbye, World!')     #finally節はtry文が例外を発生しようがしまいが実行される。
+
+ #・try節の実行中に例外起きた場合、この例外はexcept節で処理される。例外がexcept節で処理されなかった場合、この例外はfinally節の実行後に再送出される
+ #・例外はexcept節やelse節の実行中に発生することがある。この場合も発生した例外はfinally節の実行後に再送出しされる
+ #・try文がbreak文・continue文・return文に遭遇した場合、finally節はbreak文・continue文・return文の実行直前に実行される。
+ #・finally節がreturn文を含んでいた場合、返り値はこのfinally節のreturn文からのものとなり、try節のreturn分からの値は返されない
+
+def bool_return():
+    try:
+        print(7777)
+        return True
+    finally:            #finally節はtry文が完了する前のタスクとして実行されるため、finally節の return false が返り値となる
+        return False 
+
+print( bool_return() )  # 出力 False
+
+ # さらに複雑な例
+
+def divide( x, y ):
+    try:
+        result = x / y
+    except ZeroDivisionError:
+        print("0除算！")
+    else:
+        print( f"答えは {result}" )
+    finally:
+        print("finally節の発動")
+
+divide(2, 1)      # exceptの発動がなく、else節で答えを出力してから finally節が呼ばれる
+divide(2, 0)      # exceptのZeroDivisionErrorで "0除算！" が出力されてから finally節が呼ばれる
+divide("2", "1")  # exceptで TypeErrorは処理されないので、finally節の実行後に例外が再送出される
