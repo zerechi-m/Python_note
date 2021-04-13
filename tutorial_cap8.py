@@ -207,3 +207,19 @@ def divide( x, y ):
 divide(2, 1)      # exceptの発動がなく、else節で答えを出力してから finally節が呼ばれる
 divide(2, 0)      # exceptのZeroDivisionErrorで "0除算！" が出力されてから finally節が呼ばれる
 divide("2", "1")  # exceptで TypeErrorは処理されないので、finally節の実行後に例外が再送出される
+
+# 8.8 ) オブジェクトに定義済みのクリーンアップ動作
+
+ # オブジェクトによっては不要になった際に（そのオブジェクトの成功失敗に関わらず)実行される標準のクリーンアップ動作が
+ # 定義してあるが以下の例では 下記のコードを実行した後の間、ファイルが開っぱなしになっている【line.close()が定義されていない】。大きなアプリケーションでは大きな問題である。
+
+for line in open("myfile.txt"):
+    print(line, end="")
+
+ # 下記のようにwith文を使用すると、ファイルのようなオブジェクトを使用後すぐに適切な方法でクリーンアップされることを保証した形で利用できる
+
+with open('myfile.txt') as f:      # with文で f に格納された ファイルは実行後、必ず f.close() 処理が実行される。 
+    for line in f:                        
+        print(line, end=' ')              
+
+ # with文の実行後、ファイル f は必ず close がされる。行の処理中に問題が起きたとしても常にクローズされる。
