@@ -50,3 +50,28 @@ class Complex:
 
 x = Complex(3.0, -4.5)
 print(x.r, x.i)
+
+# 9.3.3 ) インスタンスオブジェクト
+
+ # インスタンスオブジェクトが理解できる操作は属性参照のみで属性名として有効なのは データ属性とメソッド
+
+class MyClass:
+    def counter():
+        counter = 0
+
+x = MyClass()
+x.counter = 1
+
+while x.counter < 10:
+    x.counter = x.counter * 2
+
+print(x.counter)
+del x.counter
+
+# 9.3.4 ) メソッドオブジェクト
+
+ # 通常 x.f() は結合後、すぐに実行されるが
+ # xf = x.f() とxf に格納でき, xf を読み込むことで実行を開始する。
+
+ 
+
