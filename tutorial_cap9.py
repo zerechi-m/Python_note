@@ -27,3 +27,26 @@ def scope_test():
 scope_test()
 print("In global scope:", spam)  # <-- spamはスコープ外からの呼び出しの為、 global でspam を呼び込まないとならない
 
+
+# 9.3.1 ) クラス定義の構文
+
+# class Name:
+#    """A simple example class"""
+#
+#     def __init__():         クラスインスタンスが作成されると最初に処理される initialize
+#         self.data = []
+
+# x = Name()  でクラスのインスタンスを生成する
+
+# __init__() がクラス内に定義されてあると新規作成されたインスタンスに対して
+# 自動的に __init__() がコールされる為、特殊メソッドが定義できるようになっている。
+
+# 9.3.2 ) クラスオブジェクト
+
+class Complex:
+    def __init__(self, realpart, imagepart):
+        self.r = realpart
+        self.i = imagepart
+
+x = Complex(3.0, -4.5)
+print(x.r, x.i)
