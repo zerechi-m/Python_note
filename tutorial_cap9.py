@@ -73,5 +73,56 @@ del x.counter
  # 通常 x.f() は結合後、すぐに実行されるが
  # xf = x.f() とxf に格納でき, xf を読み込むことで実行を開始する。
 
- 
 
+# 9.3.5 ) クラス変数とインスタンス変数
+
+ # クラス変数はそのクラスから生成された全てのインスタンスが共有する属性やメソッド
+ # インスタンス変数は それぞれのインスタンスかに固有のデータ
+
+class Dog:
+    kind = 'canine'             #<-- クラス変数のため全てのインスタンスで共有
+
+    def __init__(self, name):
+        self.name = name
+
+d = Dog('Fido')
+c = Dog('Buddy')
+print( d.kind )    #<-- 'canine'
+print( c.kind )    #<-- 'canine'
+print( d.name )    #<-- "Fido"     インスタンス変数の為、固有
+print( c.name )    #<-- "Buddy"    インスタンス変数の為、固有
+
+class Dog2:
+    tricks = []
+
+    def __init__(self, name):
+        self.name = name
+    
+    def add_trick(self, trick):
+        self.tricks.append(trick)
+
+d = Dog2("Ai")
+c = Dog2("Sony")
+d.add_trick("転がる")
+c.add_trick("伏せ")
+
+print( d.tricks )    # 出力 ['転がる', '伏せ'] とクラスインスタンスなので tricks がクラス共有となる
+print( c.tricks )
+
+ # 上記の場合は インスタンス変数を使用すれば インスタンスに固有したデータになる。
+
+class Dog3:
+    def __init__(self, name):
+        self.name = name
+        self.tricks = []             #<-- 上記のクラス変数とは違いインスタンス毎にリストが作成される
+    
+    def add_trick(self, trick):
+        self.tricks.append(trick)
+
+d = Dog3("Ai")
+c = Dog3("Sony")
+d.add_trick("転がる")
+c.add_trick("伏せ")
+
+print( d.tricks )    # 出力 ['転がる'] とクラスインスタンスなので d に固有したデータとなる
+print( c.tricks )    # 出力 ['伏せ'] とクラスインスタンスなので c に固有したデータとなる
