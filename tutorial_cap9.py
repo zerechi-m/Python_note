@@ -126,3 +126,53 @@ c.add_trick("伏せ")
 
 print( d.tricks )    # 出力 ['転がる'] とクラスインスタンスなので d に固有したデータとなる
 print( c.tricks )    # 出力 ['伏せ'] とクラスインスタンスなので c に固有したデータとなる
+
+
+# 9.4 ) その他色々
+
+class Warehouse:
+    purpose = 'storage'
+    region = 'west'
+
+w1 = Warehouse()
+print(w1.purpose, w1.region)
+
+w2 = Warehouse()
+w2.region = 'east'
+print(w2.purpose, w2.region)
+
+
+class Bag:
+    def __init__(self):
+        self.data = []
+    
+    def add(self,x):
+        self.data.append(x)
+
+    def addtwice(self, x):
+        self.add(x)
+        self.add(x)
+
+bag = Bag()
+bag.addtwice(2)
+print(bag.data)
+
+
+# # 9.5 ) 継承
+
+# class base():
+#     def a(self):
+#         print('私の名前はbase.aです。base.bをコールします')
+#         self.b()
+    
+#     def b(self):
+#         print('私の名前はbase.bです。base.aをコールします')
+
+# class der(base):
+#     def b(self):
+#         print('ウッヒョ！オイラはder.bだぜ')
+
+# b = base()
+# d = der()
+# b.a()
+# d.a()
