@@ -158,21 +158,36 @@ bag.addtwice(2)
 print(bag.data)
 
 
-# # 9.5 ) 継承
+# 9.5 ) 継承
 
-# class base():
-#     def a(self):
-#         print('私の名前はbase.aです。base.bをコールします')
-#         self.b()
+ # 下記は、der が baseを継承している
+
+class base():
+    def a(self):
+        print('私の名前はbase.aです。base.bをコールします')
+        self.b()
     
-#     def b(self):
-#         print('私の名前はbase.bです。base.aをコールします')
+    def b(self):
+        print('私の名前はbase.bです。der.bでオーバーライドされます')
 
-# class der(base):
-#     def b(self):
-#         print('ウッヒョ！オイラはder.bだぜ')
+class der(base):   #<-- class baseの派生クラス
+    def b(self):
+        print('ウッヒョ！オイラはder.bだぜ')
 
-# b = base()
-# d = der()
-# b.a()
-# d.a()
+b = base()
+d = der()
+b.a()
+d.a()       # 基底クラスと派生クラスの関数名が 被った際には派生クラスの関数が実行される オーバーライド
+
+ #クラスの継承で使用ができるビルトイン関数
+
+ # ◯ インスタンスの型をチェックするには isinstance()を使用する。
+ #   isinstance(obj, int) では obj.__class が int またはその派生クラスである場合にのみTrueがかえる
+
+ # ◯ クラス継承のチェックに issubclass()を使用。 
+ #   issubclass(bool, int) はTrue 返るがこれはboolがintのサブクラスであるからだ
+ #   issubclass(float, int) は floatがintのサブクラスでないため Falseとなる。
+
+
+
+
