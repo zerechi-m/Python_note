@@ -303,10 +303,27 @@ def reverse(data):       #< ---- ジェネレーター
 for char in reverse('golf'):
     print(char)
 
-# ジェネレーターがコンパクトなのは __iter__() と __next__()の両メソッドが自動生成されるからである
-# 鍵となる機能のもう一つがローカル変数と実行状態がコール間で自動保存されるからこれにより関数が簡単にかけるようになり
-# self.index と self.dataのようなアプローチよりもはるかにクリア
+ # ジェネレーターがコンパクトなのは __iter__() と __next__()の両メソッドが自動生成されるからである
+ # 鍵となる機能のもう一つがローカル変数と実行状態がコール間で自動保存されるからこれにより関数が簡単にかけるようになり
+ # self.index と self.dataのようなアプローチよりもはるかにクリア
 
 
+# 9.10 ) ジェネレーター式
+
+ # 簡単なジェネレータであれば式ほど簡潔にかける。これはリスト内包によく似た構文で角カッコの代わりに丸括弧を使用する。
+ # この式は関数を包むだけで手軽に使用できるジェネレーターとしてデザインされた。
+
+print(sum(i*i for i in range(10)))  # 0 ~ 9の二乗数字を合計
+
+xvec = [10, 20, 30]
+yvec = [7, 5, 3]
+print(sum(x*y for x,y in zip(xvec, yvec)))   
+
+# unique_words = set(word  for line in page  for word in line.split()) # ページの中の単語を重複なしで
+
+# valedictorian = max((student.gpa, student.name) for student in graduates)
+
+data = 'golf'
+print(list(data[i] for i in range(len(data)-1, -1, -1)))
 
 
