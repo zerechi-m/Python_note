@@ -189,5 +189,14 @@ d.a()       # 基底クラスと派生クラスの関数名が 被った際に�
  #   issubclass(float, int) は floatがintのサブクラスでないため Falseとなる。
 
 
+# 9.5.1 ) 多重継承
+
+ # Python では多重継承の一形態もサポートしている。複数の基底クラス定義はこのようになる。
+ # 基本的に 左から右に読まれる
+
+# class DerivedClassName(Base1, Base2, Base3):
+   # 処理
+
+
 
 
