@@ -288,5 +288,25 @@ class Reverse:
 rev = Reverse('spam')
 iter(rev)
 
-while True:
-    print(next(rev))
+
+
+# 9.9 ) ジェネレーター
+
+ # ジェネレータは反復子を作成する上でパワフルなツールである。
+ # 普通の関数と同じように書くが、データを返す部分でyieldを使用する、next()がコールされる度に
+ # ジェネレーターは前回抜けた所に戻る。
+
+def reverse(data):       #< ---- ジェネレーター
+    for index in range(len(data)-1, -1, -1):
+        yield data[index]        
+
+for char in reverse('golf'):
+    print(char)
+
+# ジェネレーターがコンパクトなのは __iter__() と __next__()の両メソッドが自動生成されるからである
+# 鍵となる機能のもう一つがローカル変数と実行状態がコール間で自動保存されるからこれにより関数が簡単にかけるようになり
+# self.index と self.dataのようなアプローチよりもはるかにクリア
+
+
+
+
