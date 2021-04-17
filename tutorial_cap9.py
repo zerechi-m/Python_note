@@ -203,21 +203,45 @@ d.a()       # 基底クラスと派生クラスの関数名が 被った際に�
  # ほとんどのPythonコードで守られている慣習がある。 _(アンダースコア)で設置された名前 (_spam)などはAPIの
  # 非公開部である。
 
-class Mapping:
-    def __init__(self, iterable):
-        self.item_list = []
-        self.__update(iterable)
+# class Mapping:
+#     def __init__(self, iterable):
+#         self.item_list = []
+#         self.__update(iterable)
     
-    def update(self, iterable):
-        for item in iterable:
-            self.item_list.append(item)
+#     def update(self, iterable):
+#         for item in iterable:
+#             self.item_list.append(item)
 
-__update = update     # update()メソッドのプライベートコピー
+# mapping = Mapping()
+# __update = update()    # update()メソッドのプライベートコピー
 
-class MappingSubclass(Mapping):
-    def update(self, keys, values):
-        for item in zip(keys, values):
-            self.item_list.append(item)
-            
+# class MappingSubclass(Mapping):
+#     def update(self, keys, values):
+#         for item in zip(keys, values):
+#             self.item_list.append(item)
 
+# 9.7 ) 残り物あれこれ
 
+ # PascalのレコードやCの構造体のように名前のついたデータアイテムを集めておくデータ型であれば時に便利である。
+ # これには空の定義を使うのがうまい
+
+class Employee:
+    pass
+
+john = Employee() # 空のインスタンスを生成
+
+john.name = 'John Doe'
+john.dept = 'computer lab'
+john.salary = 1000
+
+print(john.name)
+ 
+ # 特定のデータ形を想定したPythonコードにそのデータ型のメソッドをエミュレートしたクラスを
+ # 渡すことはよくある。
+ # 例えば文字列バッファからデータを得るクラスにread(), readline()メソッドを定義すると
+ # ファイルオブジェクトからデータを受け取って整形捨関数に引数として渡せるようになる。
+ 
+ # インスタンスメソッドオブジェクトにも属性がある。メソッドm()に対してインスタンスオブジェクトは
+ # m.__self__であり、メソッドに対応した関数オブジェクトはm.__func__である。
+
+ 
