@@ -197,6 +197,27 @@ d.a()       # 基底クラスと派生クラスの関数名が 被った際に�
 # class DerivedClassName(Base1, Base2, Base3):
    # 処理
 
+# 9.6 ) プライベート変数
 
+ # オブジェクト内部からしかアクセスできない「プライベート」インスタンス変数はPythonには存在しない。
+ # ほとんどのPythonコードで守られている慣習がある。 _(アンダースコア)で設置された名前 (_spam)などはAPIの
+ # 非公開部である。
+
+class Mapping:
+    def __init__(self, iterable):
+        self.item_list = []
+        self.__update(iterable)
+    
+    def update(self, iterable):
+        for item in iterable:
+            self.item_list.append(item)
+
+__update = update     # update()メソッドのプライベートコピー
+
+class MappingSubclass(Mapping):
+    def update(self, keys, values):
+        for item in zip(keys, values):
+            self.item_list.append(item)
+            
 
 
