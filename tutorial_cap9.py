@@ -244,4 +244,49 @@ print(john.name)
  # インスタンスメソッドオブジェクトにも属性がある。メソッドm()に対してインスタンスオブジェクトは
  # m.__self__であり、メソッドに対応した関数オブジェクトはm.__func__である。
 
- 
+
+# 9.8 ) 反復子 (iterator)
+
+for element in (1,2,3):
+    print(element)
+
+for key in {'one': 1, 'two': 2}:
+    print(key)
+
+ # コンテナオブジェクトの多くはfor文でループでき、このアクセススタイルはクリアで簡潔だ。反復子の利用は
+ # Pythonを征服し、統一した。しかし舞台裏では for文 はコンテナオブジェクトにiter()をコールするように
+ # なっている。この関数は反復オブジェクトを返し、反復子オブジェクトにはコンテナの要素に一つずつアクセスする。
+ # __next__()はStopiterationの例外を送り出して終了する。
+
+s = 'abc'
+it = iter(s)
+
+print(next(it))  # 出力 a
+print(next(it))  # 出力 b
+print(next(it))  # 出力 c
+# print(next(it))  # StopIterationエラー
+
+ # 自作クラスに反復子の振る舞いを追加するのは簡単である。
+ # __next__()メソッドのついたオプジェクトを返す __iter__()メソッドを定義すれば良い
+
+class Reverse:
+    "シーケンスを逆順にループする反復子"
+    
+    def __init__(self, data):
+        self.data = data
+        self.index = len(data)
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.index == 0:
+            raise StopIteration
+        self.index = self.index - 1
+        return self.data[self.index]
+
+rev = Reverse('spam')
+iter(rev)
+
+while True:
+    print(next(rev))
