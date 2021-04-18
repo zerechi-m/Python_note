@@ -113,3 +113,19 @@ now = date.today()
 print(now)
 
 print(now.strftime('%Y年 %m月 %d日'))
+
+# 10.9 ) データ圧縮
+
+ # データのアーカイブ化と圧縮でよく使われるフォーマットの直接的なサポートが
+ # zlib, gzip, bz2, lzma, zipfile といったモジュールにより提供されている
+
+import zlib
+s = b'witch witch has witch witches wrist watch'
+print(len(s))
+
+t = zlib.compress(s)
+print(len(t))
+
+print(zlib.decompress(t))
+
+print(zlib.crc32(s))
