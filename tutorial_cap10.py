@@ -25,3 +25,24 @@ print(os.getcwd())  # カレントディレクトリを返す
 import glob
 print(glob.glob('*.py'))  # .pyの拡張子ファイルを全て検索して返す。
 
+# 10.3 ) コマンドライン引数
+
+ # ユーティリティスクリプトではコマンドライン引数を処理する場合が多い
+ # 引数はsysモジュールのargv属性にリストとして格納されている。
+ # 以下はコマンドラインでpython demo.py を実行した状態にある。
+
+import sys
+print(sys.argv)
+
+ # argparseモジュールはコマンドライン引数の処理に洗練されたメカニズムを提供する。
+ # 以下のスクリプトは一個以上のファイル名とオプションとして表示行数をとる。
+
+import argparse
+
+parser = argparse.ArgumentParser(prog='top', description='Show top lines from each file')
+parser.add_argument('filenames', nargs='+')
+parser.add_argument('-l', '--lines', type=int, default=10)
+args = parser.parse_args()
+print(args)
+
+
