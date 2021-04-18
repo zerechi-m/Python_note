@@ -50,10 +50,42 @@ print(sys.argv)
  # sysモジュールにはstdin stdout stderr といった属性もついている。最後のstderr は stdoutがリダイレクトされている際にも警告やエラーメッセージが見えるように
  # するのに便利だ
 
-import sys
-print(sys.stderr.write('Warning'))
+# import sys
+# print(sys.stderr.write('Warning'))
 
-sys.exit() # 直接的な方法でスクリプトを終了したい時に使用する。
+# sys.exit() # 直接的な方法でスクリプトを終了したい時に使用する。
 
 # 10.5 ) 文字列パターンマッチング
 
+ # reモジュールは高度な文字列処理を行う正規表現ツールを提供する。正規表現は複雑なマッチングや操作に簡潔で最適化された解を与える。
+
+import re
+print(re.findall(r'\bf[a-z]*', 'which foot or hand fell fastest'))
+
+# 10.6 ) 数学
+ 
+ # mathモジュールを使用すると浮動小数点数数学用の下層のCライブラリ関数にアクセスできる。
+
+import math
+print(math.cos(math.pi / 4))
+
+print(math.log(1024, 2))
+
+ # randomモジュールは無作為抽出のツールを提供する
+
+import random
+print(random.choice(['apple', 'pear', 'banana'])) #<-- リストの中の要素を無作為に一つ選ぶ
+
+print(random.sample(range(100), 10))              #<-- 0ー100までの数を10個無作為に選ぶ
+
+print( random.randrange(6))         # 0-5までの数字を無作為に一つ選択
+
+ # statistticsモジュールは数値データの基本統計量（平均・中央値・分散など）を求める
+
+import statistics
+data = [2.75, 1.75, 1.25, 0.25, 0.5, 1.25, 3.5]
+print( statistics.mean(data) ) # 平均
+
+print( statistics.median(data) )  # 中央値
+
+print( statistics.variance(data)) # 分散
