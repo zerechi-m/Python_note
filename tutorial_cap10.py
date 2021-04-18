@@ -129,3 +129,15 @@ print(len(t))
 print(zlib.decompress(t))
 
 print(zlib.crc32(s))
+
+# 10.10 ) パフォーマンス計測
+
+ # timeitモジュールは小さな処理速度の差を素早く示してくれる
+
+from timeit import Timer
+print(Timer('t=a; a=b; b=t', 'a=1; b=2').timeit())     # この変数処理への速度
+print(Timer('a,b= a,b', 'a=1; b=2').timeit())          # ダブルパッキングでの変数処理
+
+ # timeitが微細な粒度レベルを見るのに対して、profile及びpstatsモジュールは大きめのコードブロックを律速
+ # している部分を見つけるためのツールを提供する。
+
