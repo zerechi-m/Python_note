@@ -37,12 +37,23 @@ print(sys.argv)
  # argparseモジュールはコマンドライン引数の処理に洗練されたメカニズムを提供する。
  # 以下のスクリプトは一個以上のファイル名とオプションとして表示行数をとる。
 
-import argparse
+# import argparse
 
-parser = argparse.ArgumentParser(prog='top', description='Show top lines from each file')
-parser.add_argument('filenames', nargs='+')
-parser.add_argument('-l', '--lines', type=int, default=10)
-args = parser.parse_args()
-print(args)
+# parser = argparse.ArgumentParser(prog='top', description='Show top lines from each file')
+# parser.add_argument('filenames', nargs='+')
+# parser.add_argument('-l', '--lines', type=int, default=10)
+# args = parser.parse_args()
+# print(args)
 
+# 10.4 ) エラー出力のリダイレクトとプログラムの終了
+
+ # sysモジュールにはstdin stdout stderr といった属性もついている。最後のstderr は stdoutがリダイレクトされている際にも警告やエラーメッセージが見えるように
+ # するのに便利だ
+
+import sys
+print(sys.stderr.write('Warning'))
+
+sys.exit() # 直接的な方法でスクリプトを終了したい時に使用する。
+
+# 10.5 ) 文字列パターンマッチング
 
