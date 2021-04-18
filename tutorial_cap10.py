@@ -89,3 +89,17 @@ print( statistics.mean(data) ) # 平均
 print( statistics.median(data) )  # 中央値
 
 print( statistics.variance(data)) # 分散
+
+# 10.7 ) インターネットのアクセス
+
+ # さまざまなインターネットプロトコルを処理してインターネットにアクセスするモジュールがある
+ # 特にシンプルなのは URL にあるデータを取得する urllib.request と メールを送る smtplibだ
+
+from urllib.request import urlopen
+with urlopen('http://tycho.usno.navy.mil/cgi-bin/timer.pl')
+as response:
+    for line in response:
+        line = line.decode('utf-8')   # バイナリデータをテキストにデコード
+        if 'EST' in line or 'EDT' in line:   # 頭部標準時を探す
+          print(line)
+  
