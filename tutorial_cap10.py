@@ -95,11 +95,21 @@ print( statistics.variance(data)) # 分散
  # さまざまなインターネットプロトコルを処理してインターネットにアクセスするモジュールがある
  # 特にシンプルなのは URL にあるデータを取得する urllib.request と メールを送る smtplibだ
 
-from urllib.request import urlopen
-with urlopen('http://tycho.usno.navy.mil/cgi-bin/timer.pl')
-as response:
-    for line in response:
-        line = line.decode('utf-8')   # バイナリデータをテキストにデコード
-        if 'EST' in line or 'EDT' in line:   # 頭部標準時を探す
-          print(line)
-  
+# from urllib.request import urlopen
+# with urlopen('http://tycho.usno.navy.mil/cgi-bin/timer.pl')
+# as response:
+#     for line in response:
+#         line = line.decode('utf-8')   # バイナリデータをテキストにデコード
+#         if 'EST' in line or 'EDT' in line:   # 頭部標準時を探す
+#           print(line)
+
+# 10.8 ) 日付と時間
+
+ # datetimeモジュールは日付と時間を簡単にも複雑にも処理できる一連のクラスを提供する。
+ # 日付と時間の計算をサポートしつつも実装の焦点は出力の整形や操作のために効果的に要素抽出することに当てられている。
+
+from datetime import date
+now = date.today()
+print(now)
+
+print(now.strftime('%Y年 %m月 %d日'))
