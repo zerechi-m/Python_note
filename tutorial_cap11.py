@@ -141,4 +141,29 @@ print(logging.critical('Critical error -- shutting down'))
 
  # デフォルトではデバッグメッセージとINFO が抑制されており出力先は標準エラー出力になっている。
  # 出力オプションとしては他にEmail・データグラム・ソケット・HTTPサーバーへの転送などがある。
- 
+
+# 11.6 ) 弱参照
+
+ # pythonはメモリ管理を自動的に行う。参照数がゼロになればメモリは解放される
+ # 稀にオブジェクト群を他から使われている間にだけ追跡しなければならないという場合がたまにある。
+ # ところが追跡とは参照を行うことであり、これがオブジェクトを永続させてしまう。
+ # weakrefモジュールでは参照を生成せずにオブジェクトを追跡するツールを提供する。
+ # 不要になったオブジェクトは自動的に弱参照表から除かれ弱参照オブジェクトへコールバックが起こる。
+
+import weakref, gc
+
+class A:
+    def __init__(self, value):
+        self.value = value
+    
+    def __repr__(self):
+        return str(self.value)
+
+a = A(10)
+d = weakref.WeakValueDictionary()
+d['primary'] = a
+print( d['primary'] )    #<-- オブジェクトが生きていればとってくる
+  
+del a                    #<-- 参照を削除
+print(gc.collect())      #<-- ガべージコレクションを実行
+# print(d['primary'])      #<-- エントリは自動的に削除されているためエラーになる
