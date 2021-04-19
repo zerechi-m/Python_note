@@ -125,3 +125,20 @@ print('メインプログラムは面で動き続けています。')
 
 background.join()
 print('メインプログラムはバックグラウンド処理の終了まで待っていました。')
+
+# 11.5 ) ログ取り
+
+ # loggingモジュールは機能万全かつ柔軟なログ記録システムである
+ # ログメッセージはファイルまたはsys.stderrに送られる
+
+import logging
+
+print(logging.debug('Debugging information'))
+print(logging.info('Informational message'))
+print(logging.warning('Warning:config file %s not found', 'server.conf'))
+print(logging.error('Error occurred'))
+print(logging.critical('Critical error -- shutting down'))
+
+ # デフォルトではデバッグメッセージとINFO が抑制されており出力先は標準エラー出力になっている。
+ # 出力オプションとしては他にEmail・データグラム・ソケット・HTTPサーバーへの転送などがある。
+ 
