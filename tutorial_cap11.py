@@ -67,7 +67,7 @@ photofiles = ['img_1074.jpg', 'img_1076.jpg', 'img_1077.jpg']
 class BatchRename(Template):
     delimiter = '%'
 
-fmt = input('どのようにリネームしますか (%d-日付 %n-番号 %f-形式):')  # 入力数値 yud_%n_%f
+fmt = "yud_%n_%f"
 
 t = BatchRename(fmt)
 date = time.strftime('%d%b%y')
@@ -77,3 +77,25 @@ for i, filename in enumerate(photofiles):
     print('{0} --> {1}'.format(filename, newname))
 
 # 11.3 ) バイナリデータレコードの処理
+ 
+ # structモジュールは可変長のバイナリレコードを処理する関数である pack() と unpack()を提供する
+ # 以下はzipfileモジュールを使わずにZIPファイルの各ヘッダ情報にループをかける例である。
+
+import struct
+
+with open('myfile.zip', 'rb') as f:
+    data = f.read()
+
+start = 0
+for i in range(3):
+    start += 14
+    fields = struct.unpack('<IIIHH', data[start:start+16])
+    crc32, comp_size, uncomp_size, filenamesize, extra_size = fields
+
+    start += 16
+    filename = data[start:start+filenamesize]
+    start += filenamesize
+    extra = data[start:start+extra_size]
+    print(filename, hex(crc32), comp_size, uncomp_size)
+    
+    start += extra_size + comp_size
