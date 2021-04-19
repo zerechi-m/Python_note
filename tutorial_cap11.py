@@ -60,42 +60,68 @@ print(n.safe_substitute(d))                # safe_substitute を使用すると 
  # Templateのサブクラスでは区切り文字デリミタを変えられる
  # 例えば以下のようなフォトブラウザ向けバッチ処理リネームユーティリティでは現在の日付・画像番号・ファイル形式などのプレースホルダーに%を使用しい
 
-import time, os.path
+# import time, os.path
 
-photofiles = ['img_1074.jpg', 'img_1076.jpg', 'img_1077.jpg']
+# photofiles = ['img_1074.jpg', 'img_1076.jpg', 'img_1077.jpg']
 
-class BatchRename(Template):
-    delimiter = '%'
+# class BatchRename(Template):
+#     delimiter = '%'
 
-fmt = "yud_%n_%f"
+# fmt = "yud_%n_%f"
 
-t = BatchRename(fmt)
-date = time.strftime('%d%b%y')
-for i, filename in enumerate(photofiles):
-    base, ext = os.path.splitext(filename)
-    newname = t.substitute(d=date, n=i, f=ext)
-    print('{0} --> {1}'.format(filename, newname))
+# t = BatchRename(fmt)
+# date = time.strftime('%d%b%y')
+# for i, filename in enumerate(photofiles):
+#     base, ext = os.path.splitext(filename)
+#     newname = t.substitute(d=date, n=i, f=ext)
+#     print('{0} --> {1}'.format(filename, newname))
 
 # 11.3 ) バイナリデータレコードの処理
  
  # structモジュールは可変長のバイナリレコードを処理する関数である pack() と unpack()を提供する
  # 以下はzipfileモジュールを使わずにZIPファイルの各ヘッダ情報にループをかける例である。
 
-import struct
+# import struct
 
-with open('myfile.zip', 'rb') as f:
-    data = f.read()
+# with open('myfile.zip', 'rb') as f:
+#     data = f.read()
 
-start = 0
-for i in range(3):
-    start += 14
-    fields = struct.unpack('<IIIHH', data[start:start+16])
-    crc32, comp_size, uncomp_size, filenamesize, extra_size = fields
+# start = 0
+# for i in range(3):
+#     start += 14
+#     fields = struct.unpack('<IIIHH', data[start:start+16])
+#     crc32, comp_size, uncomp_size, filenamesize, extra_size = fields
 
-    start += 16
-    filename = data[start:start+filenamesize]
-    start += filenamesize
-    extra = data[start:start+extra_size]
-    print(filename, hex(crc32), comp_size, uncomp_size)
+#     start += 16
+#     filename = data[start:start+filenamesize]
+#     start += filenamesize
+#     extra = data[start:start+extra_size]
+#     print(filename, hex(crc32), comp_size, uncomp_size)
     
-    start += extra_size + comp_size
+#     start += extra_size + comp_size
+
+# 11.4 ) マルチスレッド
+
+  # スレッディングは順序通りに進めなくても良いタスクを分割する技法の一つ
+  # 以下のコードは高水準のthreadingモジュールを利用することでメインのプログラムを走らせたままバックグラウンド処理ができることを示す
+
+import threading, zipfile
+
+class AsyncZip(threading.Thread):
+    def __init__(self, infile, outfile):
+        threading.Thread.__init__(self)
+        self.infile = infile
+        self.outfile = outfile
+    
+    def run(self):
+        f = zipfile.ZipFile(self.outfile, 'w', zipfile.ZIP_DEFLATED)
+        f.write(self.infile)
+        f.close()
+        print('finished background zip of:', self.infile)
+
+background = AsyncZip('mydata.txt', 'myarchive.zip')
+background.start()
+print('メインプログラムは面で動き続けています。')
+
+background.join()
+print('メインプログラムはバックグラウンド処理の終了まで待っていました。')
