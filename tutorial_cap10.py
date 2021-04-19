@@ -164,18 +164,18 @@ print(doctest.testmod())
 
  # unittest モジュールは包括的な一連テストを別ファイルに持っておくことができる
 
-import unittest
+# import unittest
 
-class TestStatisticalFunctions(unittest.TestCase):
-    def test_average(self):
-      self.assertEqual(average([20,30,70]), 40.0)
-      self.assertEqual(round(average([1,5,7]), 1), 4.3)
-      with self.assertRaises(ZeroDivisionError):
-          average([])
-      with self.assertRaises(TypeError):
-          average(20, 30, 70)
+# class TestStatisticalFunctions(unittest.TestCase):
+#     def test_average(self):
+#       self.assertEqual(average([20,30,70]), 40.0)
+#       self.assertEqual(round(average([1,5,7]), 1), 4.3)
+#       with self.assertRaises(ZeroDivisionError):
+#           average([])
+#       with self.assertRaises(TypeError):
+#           average(20, 30, 70)
 
-unittest.main()     # コマンドラインからコールする全テストが呼び出される
+# unittest.main()     # コマンドラインからコールする全テストが呼び出される
 
 
 # 10.12 ) 電池付きであること
@@ -196,3 +196,4 @@ unittest.main()     # コマンドラインからコールする全テストが�
  # ・sqlite3モジュールはSQLiteデータベースライブラリのラッパーで微妙にノンスタンダードなSQL構文でアップデート、アクセスできる永続データベースを提供する。
 
  # ・国際化はgettextやlocalといったモジュール群、そして codecsパッケージといったさまざまなモジュールによりサポートされている
+
