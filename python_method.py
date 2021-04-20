@@ -205,7 +205,7 @@ print('使用方法'.zfill(50))  #<---  zfill(x) xの数値に合わせた幅で
 # r.close()
 
 
-# 型について
+# 型について  --------------------------------------------------------------
 
 print(type(10))  # type() とすることでカッコ内の型を出力する。 int
 print(type(1.2)) # type = float
@@ -216,3 +216,22 @@ print(type(a))      # type = list
 
   # 文字列型と数値型は結合できない
 print('a' + str(12) )  # 12 は数字型なのでstrで文字列型に変更して結合
+
+
+# or と and について
+
+ # or と and のプール演算子は条件分岐意外にも使用できる
+
+name1, name2, name3 = '', 'bbb', 'ccc'
+selected_name = name1 or name2 or name3   # or の左が真の場合、左の値を返す 偽の場合右の値を返す
+                                          # pythonでは一文字以上を真・0文字を偽とする
+
+print(selected_name)   # 出力 bbb
+
+ # and は True and True でtrue それ以外は False
+  # and の左が「真」の場合、右の値を返す
+  # and の左が「偽」の場合、左の値を返す
+
+name1, name2, name3 = 1, 0, 3      # 数値の 0 は偽
+selected_num = name1 and name2 and name3  # 左辺から比べて、偽の数字があれば偽を返す
+print(selected_num)  # 出力 0
