@@ -19,3 +19,8 @@ print(dic)
 name1,name2,name3,name4= '', 'suzuki','tanaka','sato'
 selected_name = name1 or name2 or name3 or name4    
 print(selected_name)
+
+
+# タプルについて
+t = 123,456,'test'
+print(t)

@@ -217,8 +217,8 @@ print(type(a))      # type = list
   # 文字列型と数値型は結合できない
 print('a' + str(12) )  # 12 は数字型なのでstrで文字列型に変更して結合
 
-
-# or と and について
+ 
+# or と and について --------------------------------------------------------
 
  # or と and のプール演算子は条件分岐意外にも使用できる
 
@@ -234,4 +234,15 @@ print(selected_name)   # 出力 bbb
 
 name1, name2, name3 = 1, 0, 3      # 数値の 0 は偽
 selected_num = name1 and name2 and name3  # 左辺から比べて、偽の数字があれば偽を返す
-print(selected_num)  # 出力 0
+print(selected_num)  # 出力 
+
+
+# replace メソッド
+ 
+ # 文字列の置き換えに使用できる
+ # .replace("対象の文字", "置換える文字", 回数) 第3引数には置換える回数を記載
+
+a = 'アイウエオ アイウエオ'
+b = a.replace('ア', 'aa', 1)  # 対象の文字に該当しなければスルーされる（エラーが出ない
+c = a.replace('ウ', '')       # 第二引数に空文字を指定すると対象の文字を削除する
+print(b, c )
