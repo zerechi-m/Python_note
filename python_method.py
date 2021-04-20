@@ -207,4 +207,12 @@ print('使用方法'.zfill(50))  #<---  zfill(x) xの数値に合わせた幅で
 
 # 型について
 
-print(type(10))  # type() とすることでカッコ内の型を出力する。
+print(type(10))  # type() とすることでカッコ内の型を出力する。 int
+print(type(1.2)) # type = float
+print(type('こんにちは')) # type = str
+
+a = ['a', 'b', 'c']
+print(type(a))      # type = list
+
+  # 文字列型と数値型は結合できない
+print('a' + str(12) )  # 12 は数字型なのでstrで文字列型に変更して結合
