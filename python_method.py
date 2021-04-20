@@ -190,9 +190,9 @@ print('使用方法'.zfill(50))  #<---  zfill(x) xの数値に合わせた幅で
 # open() メソッドについて-----------------------------
 
  # open(ファイル名, モード, エンコーディング)
-f = open('text.txt', 'a', encoding='utf-8')    
-f.write('s書き込みマッスル\n')    #write()で書込み
-f.close()                     #.close()で保存
+# f = open('text.txt', 'a', encoding='utf-8')    
+# f.write('s書き込みマッスル\n')    #write()で書込み
+# f.close()                     #.close()で保存
   # w は書き出し専用, 
   # r は読込専用, 
   # a は書込みデータがファイル末尾に自動的に記載される, 
@@ -200,6 +200,11 @@ f.close()                     #.close()で保存
   # x は新規作成
   # b はバイナリモードで開く
 
-r = open('text1.txt', 'r', encoding='utf-8')
-print(r.read())          #r.read()でファイルのテキストを表示
-r.close()
+# r = open('text1.txt', 'r', encoding='utf-8')
+# print(r.read())          #r.read()でファイルのテキストを表示
+# r.close()
+
+
+# 型について
+
+print(type(10))  # type() とすることでカッコ内の型を出力する。
