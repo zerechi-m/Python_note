@@ -41,25 +41,31 @@ import datetime
 a = datetime.date.today()
 print(repr(a))
 
-input_line = int(input())
-for i in range(input_line):
-    a = input().split()
-    hour = int(a[0][:2])
-    min = int(a[0][3:])
+# input_line = int(input())
+# for i in range(input_line):
+#     a = input().split()
+#     hour = int(a[0][:2])
+#     min = int(a[0][3:])
     
-    if min + int(a[2]) >= 60:
-        hour = hour + 1 + int(a[1])
-        min = str(min + int(a[2]) - 60)
-    else:
-        hour = str(hour + int(a[1]))
-        min = str(min + int(a[2]))
+#     if min + int(a[2]) >= 60:
+#         hour = hour + 1 + int(a[1])
+#         min = str(min + int(a[2]) - 60)
+#     else:
+#         hour = str(hour + int(a[1]))
+#         min = str(min + int(a[2]))
     
-    if int(hour) >= 24:
-        hour = str(int(hour) - 24)
+#     if int(hour) >= 24:
+#         hour = str(int(hour) - 24)
 
-    if len(hour) == 1:
-        hour = '0' + hour
-    if len(min) == 1:
-        min = '0' + min
+#     if len(hour) == 1:
+#         hour = '0' + hour
+#     if len(min) == 1:
+#         min = '0' + min
         
-    print(hour + ':' + min)
+#     print(hour + ':' + min)
+
+# 複数行の標準入力 例)入力：i_1 i_2
+
+i = list(map(int, input().split())) #i_1 i_2を取得し、iに値を入れる
+print(i[0]) #出力：i_1
+print(i[1]) #出力：i_2
