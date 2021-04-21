@@ -40,3 +40,26 @@ print(list(zip(*dic)))
 import datetime
 a = datetime.date.today()
 print(repr(a))
+
+input_line = int(input())
+for i in range(input_line):
+    a = input().split()
+    hour = int(a[0][:2])
+    min = int(a[0][3:])
+    
+    if min + int(a[2]) >= 60:
+        hour = hour + 1 + int(a[1])
+        min = str(min + int(a[2]) - 60)
+    else:
+        hour = str(hour + int(a[1]))
+        min = str(min + int(a[2]))
+    
+    if int(hour) >= 24:
+        hour = str(int(hour) - 24)
+
+    if len(hour) == 1:
+        hour = '0' + hour
+    if len(min) == 1:
+        min = '0' + min
+        
+    print(hour + ':' + min)
