@@ -182,6 +182,9 @@ today = datetime.date.today()
 print(str(today))           #<--- ユーザー用の出力のため、読みやすい文字列で表示
 print(repr(today))          #<--- オブジェクトに返して出力するため、デバック用
 
+a = 'aaaa'
+print(a, repr(a))   #<-- reprで出力させることで、入力値をまんま出力する
+
 # str.zfill()メソッドについて
 
 print('使用方法'.zfill(50))  #<---  zfill(x) xの数値に合わせた幅で出力する。空白を0で埋める

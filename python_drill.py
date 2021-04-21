@@ -24,3 +24,19 @@ print(selected_name)
 # タプルについて
 t = 123,456,'test'
 print(t)
+
+# アンパックについて
+
+dic = [
+    ['Noro', 'Nakao', 'Miyaoka'],
+    ['Kimura', 'Miyashita', 'Shibata'],
+    ['Matsumoto', 'Tanaka', 'Ivan'],
+]
+
+print(list(zip(*dic)))
+
+ # repr()について
+
+import datetime
+a = datetime.date.today()
+print(repr(a))
