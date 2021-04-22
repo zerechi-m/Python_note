@@ -74,3 +74,19 @@ print(i[1]) #出力：i_2
 
 i = [input() for z in range(3)]
 print(i)
+
+# 多重ループ
+
+m = int(input())
+a = [input() for i in range(m)]
+
+n = int(input())
+b = [input() for i in range(n)]
+
+for a in a:
+    for str in b:
+        if a in str:
+            print('YES')
+        else:
+            print('NO')
+            
