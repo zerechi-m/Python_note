@@ -69,3 +69,8 @@ print(repr(a))
 i = list(map(int, input().split())) #i_1 i_2を取得し、iに値を入れる
 print(i[0]) #出力：i_1
 print(i[1]) #出力：i_2
+
+# 標準入力の複数行にわたる入力
+
+i = [input() for z in range(3)]
+print(i)
