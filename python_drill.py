@@ -66,27 +66,34 @@ print(repr(a))
 
 # 複数行の標準入力 例)入力：i_1 i_2
 
-i = list(map(int, input().split())) #i_1 i_2を取得し、iに値を入れる
-print(i[0]) #出力：i_1
-print(i[1]) #出力：i_2
-
-# 標準入力の複数行にわたる入力
-
-i = [input() for z in range(3)]
-print(i)
 
 # 多重ループ
 
-m = int(input())
-a = [input() for i in range(m)]
+# m = int(input())
+# a = [input() for i in range(m)]
 
-n = int(input())
-b = [input() for i in range(n)]
+# n = int(input())
+# b = [input() for i in range(n)]
 
-for a in a:
-    for str in b:
-        if a in str:
-            print('YES')
-        else:
-            print('NO')
-            
+# for a in a:
+#     for str in b:
+#         if a in str:
+#             print('YES')
+#         else:
+#             print('NO')
+
+for i in range(20):
+    if i%3 == 0:
+        print("{}は3で割り切れます".format(i), end=' ')
+    elif i>8 and i%2 == 0:
+        break
+    else:
+        continue 
+
+i = 8
+if i%3 == 0:
+   print("{}は3で割り切れます".format(i), end=' ')
+elif i>8 and i%2 == 0:
+    break
+else:
+    continue 
