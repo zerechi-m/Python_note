@@ -97,3 +97,26 @@ elif i>8 and i%2 == 0:
     break
 else:
     continue 
+
+# coding: utf-8
+# 自分の得意な言語で
+# Let's チャレンジ！！
+# input_line = int(input())
+ele1 = 0
+ele2 = 0
+
+for i in range(input_line):
+    # a = input().split()
+    if 'SET' in a:
+        if a[1] == '1':
+            ele1 = int(a[2])
+        elif a[1] == '2':
+            ele2 = int(a[2])
+            
+    if 'ADD' in a:
+        ele2 = ele1 + int(a[1])
+    
+    if 'SUB' in a:
+        ele2 = ele1 - int(a[1])
+
+print(ele1, ele2)
