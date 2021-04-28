@@ -120,3 +120,26 @@ for i in range(input_line):
         ele2 = ele1 - int(a[1])
 
 print(ele1, ele2)
+
+# H = int(input())
+
+p = [0, 1, 1]
+m = [0, 1, 1]
+dmg = 2
+num = 2
+
+while dmg < H:
+    p[0] = p[1]
+    p[1] = p[2]
+    
+    m[0] = m[1]
+    m[1] = m[2]
+    
+    p[2] = m[0] + m[1]
+    m[2] = p[0] + 2 * p[1]
+    
+    dmg += m[2]
+    
+    num += 1
+    
+print(num)
