@@ -143,3 +143,15 @@ while dmg < H:
     num += 1
     
 print(num)
+
+H, W, N = [ int(i) for i in input().split()] 
+a = []
+for i in range(H):
+    [b] = [ reco for reco in input().split()]
+    c = [z for z in b]
+    a.append(c)
+    
+
+for i in range(N):
+    num = [int(cou) for cou in input().split()] 
+    print(a[num[0]][num[1]])
