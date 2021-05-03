@@ -82,76 +82,86 @@ print(repr(a))
 #         else:
 #             print('NO')
 
-for i in range(20):
-    if i%3 == 0:
-        print("{}は3で割り切れます".format(i), end=' ')
-    elif i>8 and i%2 == 0:
-        break
-    else:
-        continue 
+# for i in range(20):
+#     if i%3 == 0:
+#         print("{}は3で割り切れます".format(i), end=' ')
+#     elif i>8 and i%2 == 0:
+#         break
+#     else:
+#         continue 
 
-i = 8
-if i%3 == 0:
-   print("{}は3で割り切れます".format(i), end=' ')
-elif i>8 and i%2 == 0:
-    break
-else:
-    continue 
+# i = 8
+# if i%3 == 0:
+#    print("{}は3で割り切れます".format(i), end=' ')
+# elif i>8 and i%2 == 0:
+#     break
+# else:
+#     continue 
 
 # coding: utf-8
 # 自分の得意な言語で
 # Let's チャレンジ！！
 # input_line = int(input())
-ele1 = 0
-ele2 = 0
+# ele1 = 0
+# ele2 = 0
 
-for i in range(input_line):
-    # a = input().split()
-    if 'SET' in a:
-        if a[1] == '1':
-            ele1 = int(a[2])
-        elif a[1] == '2':
-            ele2 = int(a[2])
+# for i in range(input_line):
+#     # a = input().split()
+#     if 'SET' in a:
+#         if a[1] == '1':
+#             ele1 = int(a[2])
+#         elif a[1] == '2':
+#             ele2 = int(a[2])
             
-    if 'ADD' in a:
-        ele2 = ele1 + int(a[1])
+#     if 'ADD' in a:
+#         ele2 = ele1 + int(a[1])
     
-    if 'SUB' in a:
-        ele2 = ele1 - int(a[1])
+#     if 'SUB' in a:
+#         ele2 = ele1 - int(a[1])
 
-print(ele1, ele2)
+# print(ele1, ele2)
 
-# H = int(input())
+# # H = int(input())
 
-p = [0, 1, 1]
-m = [0, 1, 1]
-dmg = 2
-num = 2
+# p = [0, 1, 1]
+# m = [0, 1, 1]
+# dmg = 2
+# num = 2
 
-while dmg < H:
-    p[0] = p[1]
-    p[1] = p[2]
+# while dmg < H:
+#     p[0] = p[1]
+#     p[1] = p[2]
     
-    m[0] = m[1]
-    m[1] = m[2]
+#     m[0] = m[1]
+#     m[1] = m[2]
     
-    p[2] = m[0] + m[1]
-    m[2] = p[0] + 2 * p[1]
+#     p[2] = m[0] + m[1]
+#     m[2] = p[0] + 2 * p[1]
     
-    dmg += m[2]
+#     dmg += m[2]
     
-    num += 1
+#     num += 1
     
-print(num)
+# print(num)
 
-H, W, N = [ int(i) for i in input().split()] 
-a = []
-for i in range(H):
-    [b] = [ reco for reco in input().split()]
-    c = [z for z in b]
-    a.append(c)
+# H, W, N = [ int(i) for i in input().split()] 
+# a = []
+# for i in range(H):
+#     [b] = [ reco for reco in input().split()]
+#     c = [z for z in b]
+#     a.append(c)
     
 
-for i in range(N):
-    num = [int(cou) for cou in input().split()] 
-    print(a[num[0]][num[1]])
+# for i in range(N):
+#     num = [int(cou) for cou in input().split()] 
+#     print(a[num[0]][num[1]])
+
+# n = input().split()
+MM, dd = int(n[0][0:2]),int(n[0][-2:]) 
+hh, mm = int(n[1][:2]), int(n[1][-2:])
+
+if hh >= 24:
+    dd += hh // 24 
+    hh %= 24
+
+print('{0:0>2}/{1:0>2} {2:0>2}:{3:0>2}'.format(MM, dd, hh, mm))
