@@ -152,11 +152,11 @@ print(repr(a))
 #     a.append(c)
     
 
-# for i in range(N):
-#     num = [int(cou) for cou in input().split()] 
-#     print(a[num[0]][num[1]])
+for i in range(N):
+    num = [int(cou) for cou in input().split()] 
+    print(a[num[0]][num[1]])
 
-# n = input().split()
+n = input().split()
 MM, dd = int(n[0][0:2]),int(n[0][-2:]) 
 hh, mm = int(n[1][:2]), int(n[1][-2:])
 
