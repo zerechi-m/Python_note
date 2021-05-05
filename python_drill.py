@@ -165,3 +165,21 @@ if hh >= 24:
     hh %= 24
 
 print('{0:0>2}/{1:0>2} {2:0>2}:{3:0>2}'.format(MM, dd, hh, mm))
+
+input_line = int(input())
+point = 0
+
+for i in range(input_line):
+    a = input().split()
+    ans = [ z for z in a[0]]
+    que = [ x for x in a[1]]
+    
+    if que == ans:
+        point += 2
+    elif len(que) == len(ans):
+       sabun = [ y for x, y in zip(ans, que) if x != y]
+       if len(sabun) == 1:
+           point += 1
+           
+print(point)
+        
