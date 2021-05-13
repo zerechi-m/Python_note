@@ -182,4 +182,10 @@ for i in range(input_line):
            point += 1
            
 print(point)
-        
+
+array = []
+for i in range(3):
+    a = int(input())
+    array.append(a)
+    
+print('{}-{}-{}'.format(*array))
